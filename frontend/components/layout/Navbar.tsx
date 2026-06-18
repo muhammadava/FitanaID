@@ -17,7 +17,8 @@ export function Navbar() {
   const { data: session } = useSession();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownTentangKamiOpen, setDropdownTentangKamiOpen] = useState(false);
+  const [dropdownProfilOpen, setDropdownProfilOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
@@ -48,7 +49,7 @@ export function Navbar() {
           {/* Tentang Dropdown */}
           <div className="relative">
             <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
+              onClick={() => setDropdownTentangKamiOpen(!dropdownTentangKamiOpen)}
               className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-emerald-700 hover:bg-gray-50 transition-colors flex items-center gap-1"
             >
               Tentang Kami
@@ -56,12 +57,12 @@ export function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            {dropdownOpen && (
+            {dropdownTentangKamiOpen && (
               <div className="absolute top-full right-0 mt-1 w-52 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50">
-                <Link href="/tentang/visi-misi" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" onClick={() => setDropdownOpen(false)}>
+                <Link href="/tentang/visi-misi" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" onClick={() => setDropdownTentangKamiOpen(false)}>
                   Visi & Misi
                 </Link>
-                <Link href="/tentang/tim" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" onClick={() => setDropdownOpen(false)}>
+                <Link href="/tentang/tim" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" onClick={() => setDropdownTentangKamiOpen(false)}>
                   Tim Kami
                 </Link>
               </div>
@@ -74,7 +75,7 @@ export function Navbar() {
           {session?.user ? (
             <div className="relative">
               <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                onClick={() => setDropdownProfilOpen(!dropdownProfilOpen)}
                 className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors"
               >
                 {session.user.image && (
@@ -87,9 +88,9 @@ export function Navbar() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {dropdownOpen && (
+              {dropdownProfilOpen && (
                 <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50">
-                  <Link href="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" onClick={() => setDropdownOpen(false)}>
+                  <Link href="/dashboard" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" onClick={() => setDropdownProfilOpen(false)}>
                     Dashboard
                   </Link>
                   <hr className="my-1 border-gray-100" />
