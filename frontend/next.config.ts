@@ -5,13 +5,18 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   async rewrites() {
     return [
+      // Health check endpoint (root level)
+      {
+        source: "/api/health",
+        destination: `${process.env.BACKEND_URL}/health`,
+      },
+      // Semua endpoint API v1
       {
         source: "/api/v1/:path*",
         destination: `${process.env.BACKEND_URL}/api/v1/:path*`,
       },
     ];
   },
-  // Izinkan image dari Google Profile
   images: {
     remotePatterns: [
       {

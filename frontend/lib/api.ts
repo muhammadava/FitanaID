@@ -1,24 +1,22 @@
 import axios from "axios";
 
-// Client-side: lewat Next.js proxy → FastAPI
 export const apiClient = axios.create({
+  baseURL: "",  // base URL kosong, path lengkap diberikan per request
+  headers: { "Content-Type": "application/json" },
+});
+
+// Shortcut untuk endpoint v1
+export const v1Client = axios.create({
   baseURL: "/api/v1",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: { "Content-Type": "application/json" },
 });
 
-// Interceptor: tambahkan token jika ada (untuk protected routes)
-apiClient.interceptors.request.use((config) => {
-  return config;
-});
-
-apiClient.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
+v1Client.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401) {
       window.location.href = "/";
     }
-    return Promise.reject(error);
+    return Promise.reject(err);
   }
 );
