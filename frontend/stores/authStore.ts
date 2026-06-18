@@ -3,7 +3,7 @@ import { create } from "zustand";
 interface User {
   id: string;
   email: string;
-  display_name: string;
+  display_name: string | null;
   username: string | null;
   profile_picture: string | null;
 }
