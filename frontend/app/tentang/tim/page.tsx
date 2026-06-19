@@ -1,6 +1,6 @@
 export default function TimPage() {
   const team = [
-    { name: "Tim FitanaID", role: "Founders & Core Team", emoji: "👥", desc: "Tim multidisiplin yang berdedikasi membangun platform kesehatan terpercaya untuk Indonesia." },
+    { name: "Dava", role: "Founder & Head Tech", emoji: "👥", desc: "Tim multidisiplin yang berdedikasi membangun platform kesehatan terpercaya untuk Indonesia." },
   ];
 
   return (
