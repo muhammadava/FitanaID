@@ -10,6 +10,9 @@ interface Props {
 export function ResultCard({ item, rank }: Props) {
   const { medicine, match_percent, matched_tags } = item;
 
+  const uses = medicine.uses ?? [];
+  const tags = matched_tags ?? [];
+
   return (
     <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
       {/* Rank badge */}
@@ -43,11 +46,11 @@ export function ResultCard({ item, rank }: Props) {
       <p className="text-sm text-gray-600 line-clamp-2 mb-4">{medicine.description}</p>
 
       {/* Key uses */}
-      {medicine.uses.length > 0 && (
+      {uses.length > 0 && (
         <div className="mb-4">
           <p className="text-xs font-medium text-gray-500 mb-1.5">Indikasi utama:</p>
           <ul className="space-y-1">
-            {medicine.uses.slice(0, 3).map((use, i) => (
+            {uses.slice(0, 3).map((use, i) => (
               <li key={i} className="text-xs text-gray-600 flex items-start gap-1.5">
                 <span className="text-emerald-500 mt-0.5">✓</span>
                 {use}
@@ -66,9 +69,9 @@ export function ResultCard({ item, rank }: Props) {
       )}
 
       {/* Matched tags */}
-      {matched_tags.length > 0 && (
+      {tags.length > 0 && (
         <div className="flex flex-wrap gap-1 mb-4">
-          {matched_tags.slice(0, 4).map((tag) => (
+          {tags.slice(0, 4).map((tag) => (
             <span key={tag} className="text-xs bg-gray-100 text-gray-500 rounded-full px-2 py-0.5">
               {tag.replace(/_/g, " ")}
             </span>
