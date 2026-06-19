@@ -21,9 +21,6 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-3 text-sm">Tentang</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="hover:text-emerald-400 transition-colors">Beranda</Link></li>
-              <li><Link href="/katalog" className="hover:text-emerald-400 transition-colors">Katalog</Link></li>
-              <li><Link href="/konsultasi" className="hover:text-emerald-400 transition-colors">Konsultasi</Link></li>
               <li><Link href="/tentang/visi-misi" className="hover:text-emerald-400 transition-colors">Visi & Misi</Link></li>
               <li><Link href="/tentang/tim" className="hover:text-emerald-400 transition-colors">Tim Kami</Link></li>
             </ul>
